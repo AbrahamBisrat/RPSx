@@ -8,7 +8,7 @@ const paper = "paper";
 const scissors = "scissors";
 const player = "player";
 const computer = "computer";
-const maxScore = 3; // You might want this to be an input from the user later on
+let maxScore; // You might want this to be an input from the user later on
 
 let randomPick = () => Math.floor(Math.random() * 3) + 1;
 let cPick;
@@ -40,24 +40,35 @@ function computeWinner(player, computer){
     else if(player === scissors && computer === rock) return false;
 }
 
-function game(){
+function game(howManyRounds){
     let playerScore = 0;
     let computerScore = 0;
     let finalWinner;
+    maxScore = Number(howManyRounds);
 
     while(computerScore < maxScore && playerScore < maxScore){
-        let currentWinner = computeWinner(humanPlay(), computerPlay());
+        let currentWinner = playRound();
         if(currentWinner) playerScore++;
         else if(currentWinner === false) computerScore++;
+
         if(playerScore === maxScore) finalWinner = player;
         else if(computerScore === maxScore) finalWinner = computer;
-        console.log("H : " + playerSelection);
-        console.log("C : " + cPick);
-        currentWinner === true ? console.log("player Won!") : currentWinner === false ? console.log("Computer Won! ") : console.log("Draw!")
-        console.log("H : " + playerScore + "\t C: " + computerScore);
-        console.log(" \n");
+
+        displayStatus(currentWinner, playerScore, computerScore);
     }
     displayWinner(finalWinner);
+}
+
+function displayStatus(cWinner, plScore, compScore){
+    console.log("H : " + playerSelection);
+        console.log("C : " + cPick);
+        cWinner === true ? console.log("player Won!") : cWinner === false ? console.log("Computer Won! ") : console.log("Draw!")
+        console.log("H : " + plScore + "\t C: " + compScore);
+        console.log(" \n");
+}
+
+function playRound(){
+    return computeWinner(humanPlay(), computerPlay());
 }
 
 function displayWinner(winner){
@@ -73,5 +84,5 @@ function displayWinner(winner){
 }
 
 
-game();
+game(1);
 
