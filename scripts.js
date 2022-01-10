@@ -1,8 +1,3 @@
-// This will be a game of Rock paper scissors 
-// At the beginning it was all empty, and Abraham Happened lol
-
-
-
 const rock = "rock";
 const paper = "paper";
 const scissors = "scissors";
@@ -26,9 +21,8 @@ function computerPlay(){
     return cPick;
 }
 
-
 function computeWinner(player, computer){
-    player = player.toLowerCase();
+    player = player.toLowerCase();                                  
 
     if(player === computer) return;
     else if(player === rock && computer === scissors) return true;
@@ -84,5 +78,8 @@ function displayWinner(winner){
 }
 
 
-game(1);
+game(10);
+
+
+
 
