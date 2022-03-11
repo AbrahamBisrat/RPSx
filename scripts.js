@@ -6,18 +6,35 @@ const paper = "paper";
 const scissors = "scissors";
 const player = "player";
 const computer = "computer";
-let maxScore; // You might want this to be an input from the user later on
+let maxScore = 3; // You might want this to be an input from the user later on
 
 let randomPick = () => Math.floor(Math.random() * 3) + 1;
 let cPick;
 let playerSelection;
+// let finalWinner;
+let playerScore = 0;
+let computerScore = 0;
+
+// buttons for user input
+const rockB = document.querySelector('#rock-btn');
+const paperB = document.querySelector('#paper-btn');
+const scissorB = document.querySelector('#scissor-btn');
+
+rockB.addEventListener('click', clickHandler);
+paperB.addEventListener('click', clickHandler);
+scissorB.addEventListener('click', clickHandler);
+
+function clickHandler(event){
+    playerSelection = this.value;
+    playRound(this.value);
+}
 
 function humanPlay(){
-    playerSelection = rock;
+    // playerSelection = takeUserInput();
+    // playerSelection = rock;
     // more to come, since we are gonna be asking the user for input later.
     return playerSelection;
 }
-
 function computerPlay(){
     let randNum = randomPick();
     cPick = randNum === 1 ? "rock" : randNum === 2 ? "paper" : randNum === 3 ?  "scissors" : "error";
@@ -37,61 +54,54 @@ function computeWinner(player, computer){
     else if(player === scissors && computer === rock) return false;
 }
 
-function game(howManyRounds){
-    let playerScore = 0;
-    let computerScore = 0;
-    let finalWinner;
-    maxScore = Number(howManyRounds);
+// function game(howManyRounds){
+//     let finalWinner;
+//     maxScore = Number(howManyRounds);
 
-    while(computerScore < maxScore && playerScore < maxScore){
-        let currentWinner = playRound();
-        if(currentWinner) playerScore++;
-        else if(currentWinner === false) computerScore++;
+//     while(computerScore < maxScore && playerScore < maxScore){
+//         let currentWinner = playRound();
+//         if(currentWinner) playerScore++;
+//         else if(currentWinner === false) computerScore++;
 
-        if(playerScore === maxScore) finalWinner = player;
-        else if(computerScore === maxScore) finalWinner = computer;
+//         if(playerScore === maxScore) finalWinner = player;
+//         else if(computerScore === maxScore) finalWinner = computer;
 
-        displayStatus(currentWinner, playerScore, computerScore);
-    }
-    displayWinner(finalWinner);
-}
-
+//         displayStatus(currentWinner, playerScore, computerScore);
+//     }
+//     displayWinner(finalWinner);
+// }
 function displayStatus(cWinner, plScore, compScore){
     console.log("H : " + playerSelection);
-        console.log("C : " + cPick);
+        p("C : " + cPick);
         cWinner === true ? console.log("player Won!") : cWinner === false ? console.log("Computer Won! ") : console.log("Draw!")
-        console.log("H : " + plScore + "\t C: " + compScore);
-        console.log(" \n");
+        p("H : " + plScore + "\t C: " + compScore);
+        p(" \n");
 }
-
-function playRound(){
-    return computeWinner(humanPlay(), computerPlay());
+function playRound(userMove){
+    if(computerScore < maxScore && playerScore < maxScore){
+        p("Player selection : " + userMove);
+        let winner = computeWinner(userMove, computerPlay());
+        if(winner === true) playerScore++;
+        if(winner === false) computerScore++;
+        displayStatus(winner, playerScore, computerScore);
+        // check for winner
+        if(playerScore === maxScore) displayWinner(player);
+        else if(computerScore === maxScore) displayWinner(computer);
+    } else{
+        p('Game has been concluded, refresh tab for another one.')
+    }
 }
 
 function displayWinner(winner){
     if(winner === player){
-        console.log(`\n You Won! ${playerSelection.toUpperCase()} beats ${cPick.toUpperCase()} !`);
+        p(`\n You Won! ${playerSelection.toUpperCase()} beats ${cPick.toUpperCase()} !`);
     }
     else if(winner === computer){
-        console.log(`\n You Lose! ${cPick.toUpperCase()} beats ${playerSelection.toUpperCase()} !`);
+        p(`\n You Lose! ${cPick.toUpperCase()} beats ${playerSelection.toUpperCase()} !`);
     }
     else{
-        console.log(`\n SAME TOOLS => ${cPick.toUpperCase()}`)
+        p(`\n SAME TOOLS => ${cPick.toUpperCase()}`)
     }
 }
 
-
-// game(10);
-
-const rockB = document.querySelector('#rock-btn');
-const paperB = document.querySelector('#paper-btn');
-const scissorB = document.querySelector('#scissor-btn');
-
-
-rockB.addEventListener('click', clickHandler);
-paperB.addEventListener('click', clickHandler);
-scissorB.addEventListener('click', clickHandler);
-
-function clickHandler(event){
-    p(this.innerText);
-}
+// game(3);
