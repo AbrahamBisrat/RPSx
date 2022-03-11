@@ -1,3 +1,6 @@
+function p(text){
+    console.log(text);
+}
 const rock = "rock";
 const paper = "paper";
 const scissors = "scissors";
@@ -78,8 +81,17 @@ function displayWinner(winner){
 }
 
 
-game(10);
+// game(10);
+
+const rockB = document.querySelector('#rock-btn');
+const paperB = document.querySelector('#paper-btn');
+const scissorB = document.querySelector('#scissor-btn');
 
 
+rockB.addEventListener('click', clickHandler);
+paperB.addEventListener('click', clickHandler);
+scissorB.addEventListener('click', clickHandler);
 
-
+function clickHandler(event){
+    p(this.innerText);
+}
