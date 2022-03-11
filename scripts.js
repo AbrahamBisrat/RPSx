@@ -43,7 +43,7 @@ function computerPlay(){
 
 function computeWinner(player, computer){
     player = player.toLowerCase();                                  
-
+    p('compute Winner : ' + player + "  : :  " + computer);
     if(player === computer) return;
     else if(player === rock && computer === scissors) return true;
     else if(player === paper && computer === rock) return true;
@@ -52,35 +52,22 @@ function computeWinner(player, computer){
     else if(player === rock && computer === paper) return false;
     else if(player === paper && computer === scissors) return false;
     else if(player === scissors && computer === rock) return false;
+    else p('edge case caught ' + player + "  :  " + computer);
 }
-
-// function game(howManyRounds){
-//     let finalWinner;
-//     maxScore = Number(howManyRounds);
-
-//     while(computerScore < maxScore && playerScore < maxScore){
-//         let currentWinner = playRound();
-//         if(currentWinner) playerScore++;
-//         else if(currentWinner === false) computerScore++;
-
-//         if(playerScore === maxScore) finalWinner = player;
-//         else if(computerScore === maxScore) finalWinner = computer;
-
-//         displayStatus(currentWinner, playerScore, computerScore);
-//     }
-//     displayWinner(finalWinner);
-// }
 function displayStatus(cWinner, plScore, compScore){
-    console.log("H : " + playerSelection);
-        p("C : " + cPick);
-        cWinner === true ? console.log("player Won!") : cWinner === false ? console.log("Computer Won! ") : console.log("Draw!")
-        p("H : " + plScore + "\t C: " + compScore);
-        p(" \n");
+    p("H : " + playerSelection);
+    p("C : " + cPick);
+    cWinner === true ? p("player Won!") : 
+                cWinner === false ? p("Computer Won! ") 
+                : console.log("Draw!");
+    p("H : " + plScore + "\t C: " + compScore);
+    p(" \n");
 }
 function playRound(userMove){
     if(computerScore < maxScore && playerScore < maxScore){
-        p("Player selection : " + userMove);
+        // p("Player selection : " + userMove);
         let winner = computeWinner(userMove, computerPlay());
+        p('playRound : ' + winner);
         if(winner === true) playerScore++;
         if(winner === false) computerScore++;
         displayStatus(winner, playerScore, computerScore);
@@ -89,6 +76,7 @@ function playRound(userMove){
         else if(computerScore === maxScore) displayWinner(computer);
     } else{
         p('Game has been concluded, refresh tab for another one.')
+        // reset game function;
     }
 }
 
