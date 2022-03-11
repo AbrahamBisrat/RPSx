@@ -6,7 +6,7 @@ const paper = "paper";
 const scissors = "scissors";
 const player = "player";
 const computer = "computer";
-let maxScore = 3; // You might want this to be an input from the user later on
+let maxScore = 5; // You might want this to be an input from the user later on
 
 let randomPick = () => Math.floor(Math.random() * 3) + 1;
 let cPick;
@@ -14,6 +14,11 @@ let playerSelection;
 // let finalWinner;
 let playerScore = 0;
 let computerScore = 0;
+
+// Dom displays
+const playerScoreDisplay = document.querySelector('#player-score');
+const computerScoreDisplay = document.querySelector('#computer-score');
+
 
 // buttons for user input
 const rockB = document.querySelector('#rock-btn');
@@ -43,7 +48,7 @@ function computerPlay(){
 
 function computeWinner(player, computer){
     player = player.toLowerCase();                                  
-    p('compute Winner : ' + player + "  : :  " + computer);
+    // p('compute Winner : ' + player + "  : :  " + computer);
     if(player === computer) return;
     else if(player === rock && computer === scissors) return true;
     else if(player === paper && computer === rock) return true;
@@ -62,6 +67,9 @@ function displayStatus(cWinner, plScore, compScore){
                 : console.log("Draw!");
     p("H : " + plScore + "\t C: " + compScore);
     p(" \n");
+    // Dom manipulation
+    playerScoreDisplay.innerText = plScore;
+    computerScoreDisplay.innerText = compScore;
 }
 function playRound(userMove){
     if(computerScore < maxScore && playerScore < maxScore){
