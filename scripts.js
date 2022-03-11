@@ -101,5 +101,3 @@ function displayWinner(winner){
         p(`\n SAME TOOLS => ${cPick.toUpperCase()}`)
     }
 }
-
-// game(3);

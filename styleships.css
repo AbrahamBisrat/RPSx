@@ -1,0 +1,64 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+body{
+    padding: 5%;
+}
+html{
+    background-image: url('./images/rspx.jpeg');
+    background-color: #cccccc; /* used if the image is not available */
+    height: 100vh;
+    width: 100vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+img{
+    opacity: 0.4;
+}
+.container{
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+}
+.buttons{
+    padding: 2%;
+    flex-basis: 100%;
+    display: flex;
+    justify-content: space-around;
+    height: 10vh;
+}
+button{
+    padding: 10px 20px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: teal;
+    background-color: black;
+    border: 0px;
+    border-radius: 5%;
+}
+.display{
+    margin-top: 5%;
+    display: flex;
+    flex: 1;
+    height: 30vh;
+    justify-content: space-around;
+}
+.computer-side, .player-side{
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+.computer-side h1, .player-side h1{
+    flex-basis: 100%;
+    align-items: center;
+}
+h1, h3{
+    font-size: larger;
+    color: darkcyan;
+}

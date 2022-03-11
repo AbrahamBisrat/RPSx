@@ -5,11 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RPSx</title>
+    <link rel="stylesheet" href="styleships.css">
     <script src="scripts.js" defer></script>
 </head>
 <body>
     <h1>Rock paper scissors</h1>
     <div class="container">
+        <div class="buttons">
+            <button id="rock-btn" value="rock">Rock</button>
+            <button id="paper-btn" value="paper">Paper</button>
+            <button id="scissor-btn" value="scissors">Scissor</button>
+        </div>
         <div class="display">
             <div class="player-side">
                 <h3>Player</h3>
@@ -22,11 +28,6 @@
             <div class="winner">
                 <h1 id="winner-display"></h1>
             </div>
-        </div>
-        <div class="buttons">
-            <button id="rock-btn" value="rock">Rock</button>
-            <button id="paper-btn" value="paper">Paper</button>
-            <button id="scissor-btn" value="scissors">Scissor</button>
         </div>
     </div>
 </body>
