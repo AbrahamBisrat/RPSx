@@ -18,7 +18,7 @@ let computerScore = 0;
 // Dom displays
 const playerScoreDisplay = document.querySelector('#player-score');
 const computerScoreDisplay = document.querySelector('#computer-score');
-
+const winnerDisplay = document.querySelector('#winner-display');
 
 // buttons for user input
 const rockB = document.querySelector('#rock-btn');
@@ -91,9 +91,11 @@ function playRound(userMove){
 function displayWinner(winner){
     if(winner === player){
         p(`\n You Won! ${playerSelection.toUpperCase()} beats ${cPick.toUpperCase()} !`);
+        winnerDisplay.innerText = 'You Won!';
     }
     else if(winner === computer){
         p(`\n You Lose! ${cPick.toUpperCase()} beats ${playerSelection.toUpperCase()} !`);
+        winnerDisplay = 'You lose!'
     }
     else{
         p(`\n SAME TOOLS => ${cPick.toUpperCase()}`)
