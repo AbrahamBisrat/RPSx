@@ -75,7 +75,7 @@ function playRound(userMove){
     if(computerScore < maxScore && playerScore < maxScore){
         // p("Player selection : " + userMove);
         let winner = computeWinner(userMove, computerPlay());
-        p('playRound : ' + winner);
+        // p('playRound : ' + winner);
         if(winner === true) playerScore++;
         if(winner === false) computerScore++;
         displayStatus(winner, playerScore, computerScore);
@@ -95,7 +95,7 @@ function displayWinner(winner){
     }
     else if(winner === computer){
         p(`\n You Lose! ${cPick.toUpperCase()} beats ${playerSelection.toUpperCase()} !`);
-        winnerDisplay = 'You lose!'
+        winnerDisplay.innerText = 'You lose!'
     }
     else{
         p(`\n SAME TOOLS => ${cPick.toUpperCase()}`)
